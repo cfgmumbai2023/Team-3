@@ -1,15 +1,6 @@
 const mongoose = require("mongoose")
 
 const courseSchema = new mongoose.Schema({
-    mediaType: {
-        type: String, // 'video', 'ppt', 'document',
-        required: true
-    },
-    mediaURL: {
-        type: String, // URL to media
-        required: true,
-        unique: true
-    },
     title: {
         type: String,
         required: true
@@ -28,6 +19,7 @@ const courseSchema = new mongoose.Schema({
     },
     lectures: [{
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'Lecture',
         required: true
     }]
 });

@@ -1,18 +1,18 @@
 const multer = require('multer')
 
-const storage = multer.diskStorage({
+const createStorage = (path) => multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/')
+        cb(null, path)
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname)
     }
 })
 
-const fileUpload = multer({
-    storage
+const mediaUpload = multer({
+    storage: createStorage('uploads/courses/')
 })
 
 module.exports = {
-    fileUpload
+    mediaUpload
 }

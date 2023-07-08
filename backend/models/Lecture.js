@@ -17,6 +17,9 @@ const lectureSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    duration: {
+        type: Number // fill it manually
+    }
 }, {
     timestamps: true
 });
