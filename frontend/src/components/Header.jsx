@@ -32,13 +32,13 @@ const Header = () => {
       <StyledAppBar position="static">
       <Toolbar>
         <StyledAppName variant="h6" component="div">
-          Name of the App
+          Indian Football Foundation
         </StyledAppName>
-        <StyledButton component={Link} to="/" color="inherit">
-          Home
-        </StyledButton>
         <StyledButton component={Link} to="/login" color="inherit">
           Login
+        </StyledButton>
+        <StyledButton component={Link} to="/register" color="inherit">
+          Register
         </StyledButton>
       </Toolbar>
     </StyledAppBar>
