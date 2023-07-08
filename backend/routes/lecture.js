@@ -6,7 +6,7 @@ const lectureRouter = Router()
 
 lectureRouter.post('/media', mediaUpload.single('course'), (req, res) => {
     res.status(201).send({
-        file: req.file.filename
+        file: `uploads/courses/${req.file.filename}`
     })
 })
 

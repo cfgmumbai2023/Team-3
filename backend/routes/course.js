@@ -1,8 +1,9 @@
 const { Router } = require("express");
-const { addCourse } = require("../controllers/course")
+const { addCourse, subscribeToCourse } = require("../controllers/course")
 
 const courseRouter = Router()
 
 courseRouter.post("/", addCourse)
+courseRouter.post("/:cId", subscribeToCourse)
 
 module.exports = courseRouter
