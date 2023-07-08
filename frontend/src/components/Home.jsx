@@ -20,8 +20,10 @@ export default function LandingPage() {
 const HeaderStyle = {
     width: "100%",
     height: "100vh",
-    background: `url(${BackgroundImage})`,
+    // background: `rgb(2, 0, 36) linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%)`,
+    background: `rgb(111,23,50) linear-gradient(90deg, rgba(111,23,50,1) 0%, rgba(121,9,77,1) 35%, rgba(37,22,22,1) 100%)`, 
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-}
+    backgroundSize: "cover",
+  };
+  
