@@ -37,6 +37,10 @@ const userSchema = new mongoose.Schema(
         return false;
       },
     },
+    yearsOfExperience: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true }
 );
