@@ -5,6 +5,6 @@ const curriculumRouter = Router()
 
 curriculumRouter.get("/:cId", getCurriculums)
 curriculumRouter.post("/", postCurriculum)
-curriculumRouter.post("/append/:cId", appendCourse)
+curriculumRouter.post("/append/:curId", appendCourse)
 
 module.exports = { curriculumRouter }

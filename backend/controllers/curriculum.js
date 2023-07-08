@@ -19,12 +19,12 @@ const getCurriculums = async (req, res) => {
 */
 const postCurriculum = async (req, res) => {
     const { name } = req.body;
-    await Curriculum.create({
+    const curriculum = await Curriculum.create({
         name,
         courses: []
     })
     res.status(201).send({
-        status: true
+        curriculum
     })
 };
 
