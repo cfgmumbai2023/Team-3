@@ -8,6 +8,8 @@ import Register from './components/Register';
 import ForgetPasswordPage from "./components/ForgetPasswordPage.jsx";
 import Dashboard from "./components/Dashboard";
 import Assessment from "./components/Assessment";
+import ChatBot from 'react-simple-chatbot';
+import { ThemeProvider } from 'styled-components';
 
 function App() {
   return (
