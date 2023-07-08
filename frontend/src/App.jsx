@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Register from './components/Register';
 import ForgetPasswordPage from "./components/ForgetPasswordPage.jsx";
 import Dashboard from "./components/Dashboard";
+import Assessment from "./components/Assessment";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/register" element={<Register/>}/>
         <Route path="/forget-password" element={<ForgetPasswordPage/>} />
         <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/quiz" element={<Assessment/>} />
       </Routes>
     </Router>
     </>
