@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+const mongoose = require("mongoose")
 
 const courseSchema = new mongoose.Schema({
     mediaType: {
@@ -32,4 +32,4 @@ const courseSchema = new mongoose.Schema({
     }]
 });
 
-export default courseSchema;
+module.exports = mongoose.model('Course', courseSchema);

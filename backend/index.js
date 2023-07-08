@@ -1,42 +1,41 @@
-import express from "express";
-import cors from "cors";
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import cookieParser from "cookie-parser";
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import multer from 'multer';
-import fs from 'fs';
-import imageDownloader from "image-downloader";
-import connectDB from './config/db.js'
-import dotenv from "dotenv";
-import colors from "colors";
-import morgan from "morgan";
+const express = require("express");
+const cors = require("cors");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const cookieParser = require("cookie-parser");
+const { fileURLToPath } = require('url');
+const { dirname } = require('path');
+const multer = require('multer');
+const fs = require('fs');
+const imageDownloader = require("image-downloader");
+const connectDB = require('./config/db.js');
+const dotenv = require("dotenv");
+const colors = require("colors");
+const morgan = require("morgan");
+const { router } = require("./routes/index.js");
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-//rest object
+// Rest object
 const app = express();
 
-//dot config
+// Dot config
 dotenv.config();
 
 connectDB();
-//middlewares
+
+// Middlewares
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    credentials: true,
-    origin: 'http://localhost:5173',
-  }));
-app.use(morgan('dev'))
+  credentials: true,
+  origin: 'http://localhost:5173',
+}));
+app.use(morgan('dev'));
 
+app.use('/api', router);
 
 app.get('/test', (req, res) => {
-    res.json('test ok');
+  res.json('test ok');
 });
-
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

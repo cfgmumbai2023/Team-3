@@ -1,4 +1,4 @@
-import mongoose, { mongo } from "mongoose";
+const mongoose = require("mongoose");
 
 const curriculumSchema = new mongoose.Schema({
     name: {
@@ -10,4 +10,4 @@ const curriculumSchema = new mongoose.Schema({
     }]
 })
 
-export default curriculumSchema;
+module.exports = mongoose.model('Curriculum',  curriculumSchema);
