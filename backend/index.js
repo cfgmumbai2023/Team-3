@@ -13,26 +13,30 @@ const dotenv = require("dotenv");
 const colors = require("colors");
 const morgan = require("morgan");
 const authRoutes = require("./routes/authRoutes.js");
+const { router } = require("./routes/index.js");
 
+// Rest object
 const app = express();
 
+// Dot config
 dotenv.config();
 
 connectDB();
 
+// Middlewares
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    credentials: true,
-    origin: 'http://localhost:5173',
+  credentials: true,
+  origin: 'http://localhost:5173',
 }));
 app.use(morgan('dev'));
 
-app.get('/test', (req, res) => {
-    res.json('test ok');
-});
+app.use('/api', router);
 
-app.use("/api/v1/auth", authRoutes);
+app.get('/test', (req, res) => {
+  res.json('test ok');
+});
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
