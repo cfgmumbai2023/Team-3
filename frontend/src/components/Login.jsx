@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import '../styles/App.css';
 
 
 export default function SignInPage() {
+    // const { login } = useContext(authContext)
     return (
         <div className="text-center m-5-auto">
             <h2>Sign in to us</h2>
