@@ -31,13 +31,13 @@ body {
 /***    Landing Page     ***/
 .main-title,
 .main-para {
-    color: #f1f1f1
+    color: #000000
 }
 
 .main-title {
     padding-top: 10rem;
     font-size: 3rem;
-    font-family: 'Fascinate', cursive;
+    font-family: 'Fascinate';
 }
 
 .main-para {

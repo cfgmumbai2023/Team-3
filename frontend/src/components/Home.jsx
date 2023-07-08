@@ -9,14 +9,9 @@ export default function LandingPage() {
     return (
         <header style={ HeaderStyle }>
             <h1 className="main-title text-center">Indian Football Foundation</h1>
+            <p className="main-para text-center">"Welcome to the the all in one platform for online coach training</p>
             <p className="main-para text-center">"A coach is someone who sees beyond your limits and pushes you to achieve things you never thought possible." - Michael Jordan</p>
             <div className="buttons text-center">
-                <Link to="/login">
-                    <button className="primary-button">log in</button>
-                </Link>
-                <Link to="/register">
-                    <button className="primary-button" id="reg_btn"><span>register </span></button>
-                </Link>
             </div>
         </header>
     )
