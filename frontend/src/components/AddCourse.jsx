@@ -79,6 +79,19 @@ const AddCourseForm = () => {
                 required
               />
             </div>
+            <div className="mb-3">
+              <label htmlFor="years" className="form-label">
+                Upload videos files
+              </label>
+               <input
+                type="file"
+                className="form-control"
+                id="years"
+                value={years}
+                onChange={(e) => setYears(e.target.value)}
+                required
+              />
+              </div>
             <div className="">
               <Link to="/course"
                 type="submit"
