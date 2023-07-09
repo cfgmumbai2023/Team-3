@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
   credentials: true,
-  origin: 'http://localhost:5173',
+  origin: 'http://localhost:5001',
 }));
 app.use(morgan('dev'));
 app.use("/uploads", express.static(__dirname + '/uploads'))
@@ -39,7 +39,7 @@ app.get('/test', (req, res) => {
   res.json('test ok');
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5002;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

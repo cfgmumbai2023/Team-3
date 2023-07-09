@@ -1,8 +1,10 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useQuery } from '@tanstack/react-query'
+// import { useEffect, useState } from 'react';
+// import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { Card, CardContent, Typography, LinearProgress, Grid, styled, CardMedia } from '@mui/material';
+import { axiosClient } from '../axios'
 
 const courses = [
     { title: 'Course 1', name: 'Introduction to React', image: 'sample1.jpg' },
@@ -37,7 +39,18 @@ const StyledHeading = styled(Typography)(({ theme }) => ({
     marginBottom: '16px',
 }));
 
-const CourseCard = ({ title, name, image }) => {
+// {
+//     "_id": "64a9da528b3f1a30ed74891d",
+//     "title": "New one",
+//     "description": "This is a new course",
+//     "mediaType": "PDF",
+//     "mediaPath": "uploads/courses/URMI_PS1.pdf",
+//     "createdAt": "2023-07-08T21:51:14.020Z",
+//     "updatedAt": "2023-07-08T21:51:14.020Z",
+//     "__v": 0
+// }
+
+const CourseCard = ({ title, name, description, createdAt }) => {
 
     // const [courses, setCourses] = useState([]);
 
@@ -53,10 +66,12 @@ const CourseCard = ({ title, name, image }) => {
 
     //     fetchCourses();
     // }, []);
+    console.log(description)
     return (
         <Grid item xs={12} sm={6} md={4} lg={3}>
             <StyledCard>
-                <StyledCardMedia image={image} />
+                {/* TODO: Use @ffmpeg to generate thumbnail */}
+                {/* <StyledCardMedia image={image} /> */}
                 <CardContent>
                     <StyledDivider />
                     <Link to="/quiz">
@@ -65,6 +80,7 @@ const CourseCard = ({ title, name, image }) => {
                     </Typography>
                     </Link>
                     <Typography variant="body1">{name}</Typography>
+                <Typography>{ description }</Typography>
                 </CardContent>
                 <LinearProgress variant="determinate" value={50} />
             </StyledCard>
@@ -72,14 +88,25 @@ const CourseCard = ({ title, name, image }) => {
     );
 };
 
+const fetchFn = async () => {
+    const res = await axiosClient.get('/lecture/64a9d86c59abb4e4152fd611')
+    return res
+}
+    
+
 const Dashboard = () => {
+    const { data, isLoading } = useQuery(
+        ['courses'],
+        fetchFn
+    )
+    if (isLoading) return <>Loading...</>
     return (
         <div style={{ marginTop: '50px', margin: '50px' }}> {/* Add overall margin to the content */}
             <>
                 <StyledHeading variant="h5">Current Courses:</StyledHeading> {/* Apply styling to the heading */}
                 <Grid container spacing={2}>
-                    {courses.map((course, index) => (
-                        <CourseCard key={index} title={course.title} name={course.name} image={course.image} />
+                    {data.data.lectures.map((course, index) => (
+                        <CourseCard key={index} {...course} />
                     ))}
                 </Grid>
             </>

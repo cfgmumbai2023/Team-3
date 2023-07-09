@@ -8,10 +8,14 @@ import Register from './components/Register';
 import ForgetPasswordPage from "./components/ForgetPasswordPage.jsx";
 import Dashboard from "./components/Dashboard";
 import Assessment from "./components/Assessment";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query"
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
     <Router>
     <Header/>
       <Routes>
@@ -23,7 +27,8 @@ function App() {
         <Route path="/quiz" element={<Assessment/>} />
       </Routes>
     </Router>
-    </>
+    <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
 
