@@ -17,52 +17,52 @@
 import React from "react";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { BsArrowDownRight, BsArrowUpRight } from "react-icons/bs";
-import { Column } from '@ant-design/plots';
-import {  Table } from 'antd';
-
+import { Column } from "@ant-design/plots";
+import { Table } from "antd";
+import { Link } from "react-router-dom";
 const Instructor = () => {
   const data = [
     {
-      type: 'Course1',
+      type: "Course1",
       sales: 38,
     },
     {
-      type: 'Course2',
+      type: "Course2",
       sales: 52,
     },
     {
-      type: 'Course3',
+      type: "Course3",
       sales: 61,
     },
     {
-      type: 'Course4',
+      type: "Course4",
       sales: 145,
     },
     {
-      type: 'Course5',
+      type: "Course5",
       sales: 48,
     },
     {
-      type: 'Course6',
+      type: "Course6",
       sales: 38,
     },
     {
-      type: 'Course7',
+      type: "Course7",
       sales: 38,
     },
     {
-      type: 'Course8',
+      type: "Course8",
       sales: 38,
     },
   ];
   const config = {
     data,
-    xField: 'type',
-    yField: 'sales',
+    xField: "type",
+    yField: "sales",
     label: {
-      position: 'middle',
+      position: "middle",
       style: {
-        fill: '#FFFFFF',
+        fill: "#FFFFFF",
         opacity: 0.6,
       },
     },
@@ -74,97 +74,109 @@ const Instructor = () => {
     },
     meta: {
       type: {
-        alias: 'Month',
+        alias: "Month",
       },
       sales: {
-        alias: 'Income',
+        alias: "Coaches",
       },
     },
   };
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
+      title: "Name",
+      dataIndex: "name",
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
+      title: "Course",
+      dataIndex: "age",
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
+      title: "Comment:",
+      dataIndex: "address",
     },
   ];
   const data1 = [];
   for (let i = 0; i < 5; i++) {
     data1.push({
       key: i,
-      name: `Edward King ${i}`,
-      age: 32,
-      address: `London, Park Lane no. ${i}`,
+      name: `Sushant`,
+      age: `Course ${i}`,
+      address: `The course is just so beautiful! This is what i wantedd!!`,
     });
   }
   return (
     <div className="p-3 px-4">
-      <div >
-        <h3 className="mb-4">Instructor: Anushka</h3>
+      <div>
+        <div className="d-flex justify-content-between">
+          <h3 className="mb-4">Instructor: Anushka</h3>
+          <button type="button" className="btn btn-primary my-3">
+            <Link to="/addcourse" className="text-white">Add course</Link>
+          </button>
+        </div>
         <div className="d-flex justify-content-between align-items-center gap-3">
           <div className="d-flex flex-column bg-white flex-grow-1 p-4 rounded-3 gap-5">
             <div className="d-flex justify-content-between align-items-end">
-              <p className="mb-0 desc">Total Sells</p>
+              <p className="mb-0 desc">Total Courses</p>
               <HiOutlineDotsVertical className="fs-4" />
             </div>
             <div className="d-flex justify-content-between align-items-center">
-              <h4 className="mb-0">$3200.00</h4>
+              <h4 className="mb-0">10</h4>
               <div>
-                <h6 className="green"> <BsArrowUpRight/> 34.7%</h6>
-                <p className="mb-0 desc">Compared to April 2021</p>
+                <h6 className="green">
+                  {" "}
+                  <BsArrowUpRight /> 34.7%
+                </h6>
+                <p className="mb-0 desc">Compared to April 2023</p>
               </div>
             </div>
           </div>
           <div className="d-flex flex-column bg-white flex-grow-1 p-4 rounded-3 gap-5">
             <div className="d-flex justify-content-between align-items-end">
-              <p className="mb-0 desc">Total Sells</p>
+              <p className="mb-0 desc">Total Coaches</p>
               <HiOutlineDotsVertical className="fs-4" />
             </div>
             <div className="d-flex justify-content-between align-items-center">
-              <h4 className="mb-0">$3200.00</h4>
+              <h4 className="mb-0">20</h4>
               <div>
-                <h6 className="green"> <BsArrowUpRight/> 34.7%</h6>
-                <p className="mb-0 desc">Compared to April 2021</p>
+                <h6 className="green">
+                  {" "}
+                  <BsArrowUpRight /> 17.7%
+                </h6>
+                <p className="mb-0 desc">Compared to April 2023</p>
               </div>
             </div>
           </div>
           <div className="d-flex flex-column bg-white flex-grow-1 p-4 rounded-3 gap-5">
             <div className="d-flex justify-content-between align-items-end">
-              <p className="mb-0 desc">Total Sells</p>
+              <p className="mb-0 desc">Total discussions</p>
               <HiOutlineDotsVertical className="fs-4" />
             </div>
             <div className="d-flex justify-content-between align-items-center">
-              <h4 className="mb-0">$3200.00</h4>
+              <h4 className="mb-0">19</h4>
               <div>
-                <h6 className="red"> <BsArrowDownRight/> 34.7%</h6>
-                <p className="mb-0 desc">Compared to April 2021</p>
+                <h6 className="red">
+                  {" "}
+                  <BsArrowDownRight /> 10.7%
+                </h6>
+                <p className="mb-0 desc">Compared to April 2023</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div className="mt-4">
-        <h3 className="mb-4">Income Statistics</h3>
-      <div><Column {...config} />;</div>
+        <h3 className="mb-4">Coach - Course Statistics</h3>
+        <div>
+          <Column {...config} />;
+        </div>
       </div>
       <div className="mt-4">
-        <h3 className="mb-4">
-          Recent orders
-        </h3>
+        <h3 className="mb-4">Recent discussions</h3>
         <Table columns={columns} dataSource={data1} />
       </div>
-      
     </div>
   );
 };
 
 export default Instructor;
-
