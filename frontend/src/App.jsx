@@ -12,18 +12,18 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query"
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import Course from "./components/Course";
 
-const queryClient = new QueryClient()
 import{
-  AiFillFacebook,
-  // AiFillTwitter,
-  AiFillInstagram,
-
+    AiFillFacebook,
+    // AiFillTwitter,
+    AiFillInstagram,
+    
 } from "react-icons/ai";
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
 import Instructor from "./components/Instructor";
 import AddCourse from "./components/AddCourse";
 
+const queryClient = new QueryClient()
 const steps = [
   {
       id: '0',

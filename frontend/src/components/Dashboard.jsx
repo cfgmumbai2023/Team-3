@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ToastContainer, toast } from "react-toastify";
-import ffmpeg from "fluent-ffmpeg";
 // import { useEffect, useState } from 'react';
 // import axios from 'axios';
 import { Link } from "react-router-dom";
@@ -166,24 +165,6 @@ const ApplyCourses = ({
 const fetchFn = async () => {
   const res = await axiosClient.get("/lecture/64a9d86c59abb4e4152fd611");
   return res;
-};
-
-const VideoThumbnail = ({ url }) => {
-  const thumbnailFilename = "thumbnail.jpg";
-  ffmpeg(url)
-    .on("filenames", (filenames) => {
-      const thumbnailPath = filenames[0];
-      console.log("Thumbnail generated:", thumbnailPath);
-    })
-    .on("error", (err) => {
-      console.error("Error generating thumbnail:", err);
-    })
-    .screenshots({
-      count: 1,
-      filename: thumbnailFilename,
-      folder: "path_to_thumbnail_directory", // Specify the output directory
-    });
-    return <></>
 };
 
 const Dashboard = () => {
