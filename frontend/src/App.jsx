@@ -10,6 +10,8 @@ import Dashboard from "./components/Dashboard";
 import Assessment from "./components/Assessment";
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
+import Instructor from "./components/Instructor";
+import AddCourse from "./components/AddCourse";
 
 const steps = [
   {
@@ -82,6 +84,9 @@ function App() {
         <Route path="/forget-password" element={<ForgetPasswordPage/>} />
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/quiz" element={<Assessment/>} />
+        <Route path="/instructor" element={<Instructor/>} />
+        <Route path="/addcourse" element={<AddCourse/>} />
+
       </Routes>
     </Router>
     <div className="App">
