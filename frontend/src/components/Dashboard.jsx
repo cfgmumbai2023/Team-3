@@ -38,22 +38,7 @@ const StyledHeading = styled(Typography)(({ theme }) => ({
 }));
 
 const CourseCard = ({ title, name, image }) => {
-
-    // const [courses, setCourses] = useState([]);
-
-    // useEffect(() => {
-    //     const fetchCourses = async () => {
-    //         try {
-    //             const response = await axios.get(API_URL); // Replace with your API endpoint
-    //             setCourses(response.data);
-    //         } catch (error) {
-    //             console.error('Error fetching courses', error);
-    //         }
-    //     };
-
-    //     fetchCourses();
-    // }, []);
-    return (
+            return (
         <Grid item xs={12} sm={6} md={4} lg={3}>
             <StyledCard>
                 <StyledCardMedia image={image} />
