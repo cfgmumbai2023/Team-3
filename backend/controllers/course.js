@@ -23,12 +23,14 @@ const addCourse = async (req, res) => {
 const subscribeToCourse = async (req, res) => {
     const { cId } = req.params;
     const { userId } = req.body;
+    console.log(userId)
     const course = await Course.findById(cId)
     const user = await User.findById(userId)
     // const courseReq = alpha[course.minimumQualification]
     // const userReq = alpha[user.vbbb]
 
     // ! Logic to determine if possible to approve subscription
+    console.log(user)
     if (course.numberOfYears > user.yearsOfExperience) {
         return res.status(401).send({
             message: "Not eligible"
