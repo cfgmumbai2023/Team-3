@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard";
 import Assessment from "./components/Assessment";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query"
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import Course from "./components/Course";
 
 const queryClient = new QueryClient()
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/forget-password" element={<ForgetPasswordPage/>} />
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/quiz" element={<Assessment/>} />
+        <Route path="/course/:id" element={<Course/>} />
       </Routes>
     </Router>
     <ReactQueryDevtools />
