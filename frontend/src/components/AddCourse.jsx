@@ -5,7 +5,8 @@ const AddCourseForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [qualifications, setQualifications] = useState("");
-  const [years, setYears] = useState("");
+  const [years, setYears] = useState();
+  const [file, setFile] = useState()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -87,8 +88,7 @@ const AddCourseForm = () => {
                 type="file"
                 className="form-control"
                 id="years"
-                value={years}
-                onChange={(e) => setYears(e.target.value)}
+                onChange={(e) => setFile(e.target.files[0])}
                 required
               />
               </div>
