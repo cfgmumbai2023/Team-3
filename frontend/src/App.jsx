@@ -8,6 +8,11 @@ import Register from './components/Register';
 import ForgetPasswordPage from "./components/ForgetPasswordPage.jsx";
 import Dashboard from "./components/Dashboard";
 import Assessment from "./components/Assessment";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query"
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import Course from "./components/Course";
+
+const queryClient = new QueryClient()
 import{
   AiFillFacebook,
   // AiFillTwitter,
@@ -81,6 +86,7 @@ const config = {
 function App() {
   return (
     <>
+    <QueryClientProvider client={queryClient}>
     <Router>
     <Header/>
       <Routes>
@@ -90,11 +96,13 @@ function App() {
         <Route path="/forget-password" element={<ForgetPasswordPage/>} />
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/quiz" element={<Assessment/>} />
+        <Route path="/course/:id" element={<Course/>} />
         <Route path="/instructor" element={<Instructor/>} />
         <Route path="/addcourse" element={<AddCourse/>} />
-
       </Routes>
     </Router>
+    <ReactQueryDevtools />
+    </QueryClientProvider>
     <footer class="page-footer text-dark font-small " id="foot">
         <footer class="bg-light text-center text-lg-start">
             <div class="container p-4">
