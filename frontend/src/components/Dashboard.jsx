@@ -2,8 +2,8 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query'
 // import { useEffect, useState } from 'react';
 // import axios from 'axios';
-import {Link} from 'react-router-dom';
-import { Card, CardContent, Typography, LinearProgress, Grid, styled, CardMedia } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { Card, CardContent, Typography, LinearProgress, Grid, styled, CardMedia, Button } from '@mui/material';
 import { axiosClient } from '../axios'
 
 const courses = [
@@ -50,23 +50,9 @@ const StyledHeading = styled(Typography)(({ theme }) => ({
 //     "__v": 0
 // }
 
-const CourseCard = ({ title, name, description, createdAt }) => {
-
-    // const [courses, setCourses] = useState([]);
-
-    // useEffect(() => {
-    //     const fetchCourses = async () => {
-    //         try {
-    //             const response = await axios.get(API_URL); // Replace with your API endpoint
-    //             setCourses(response.data);
-    //         } catch (error) {
-    //             console.error('Error fetching courses', error);
-    //         }
-    //     };
-
-    //     fetchCourses();
-    // }, []);
-    console.log(description)
+const CourseCard = ({ _id, title, name, description, createdAt, prog, ...props }) => {
+    const progress = "Continue";
+    // console.log(description)
     return (
         <Grid item xs={12} sm={6} md={4} lg={3}>
             <StyledCard>
@@ -74,13 +60,15 @@ const CourseCard = ({ title, name, description, createdAt }) => {
                 {/* <StyledCardMedia image={image} /> */}
                 <CardContent>
                     <StyledDivider />
-                    <Link to="/quiz">
+
                     <Typography variant="h6" component="div">
                         {title}
                     </Typography>
-                    </Link>
+
                     <Typography variant="body1">{name}</Typography>
-                <Typography>{ description }</Typography>
+                    <Typography>{description}</Typography>
+                    <Link state={{ _id, title, name, description, createdAt, prog, ...props }} to={`/course/${_id}`}><Button> {prog}</Button></Link>
+                    <Link to="/quiz"><Button> Quiz </Button> </Link>
                 </CardContent>
                 <LinearProgress variant="determinate" value={50} />
             </StyledCard>
@@ -92,22 +80,26 @@ const fetchFn = async () => {
     const res = await axiosClient.get('/lecture/64a9d86c59abb4e4152fd611')
     return res
 }
-    
+
 
 const Dashboard = () => {
-    const { data, isLoading } = useQuery(
-        ['courses'],
-        fetchFn
-    )
-    if (isLoading) return <>Loading...</>
+    // const { data, isLoading } = useQuery(
+    //     ['courses'],
+    //     fetchFn,       
+    // )
+    // if (isLoading) return <>Loading...</>
     return (
         <div style={{ marginTop: '50px', margin: '50px' }}> {/* Add overall margin to the content */}
             <>
-                <StyledHeading variant="h5">Current Courses:</StyledHeading> {/* Apply styling to the heading */}
+                <StyledHeading variant="h5">Current Course:</StyledHeading> {/* Apply styling to the heading */}
                 <Grid container spacing={2}>
-                    {data.data.lectures.map((course, index) => (
-                        <CourseCard key={index} {...course} />
-                    ))}
+                    {courses.map((course, index) => {
+                        if (index === 0) {
+                            return <CourseCard key={index} prog={"Continue"} {...course} />;
+                        } else {
+                            return <CourseCard key={index} prog={"Start"} {...course} />;
+                        }
+                    })}
                 </Grid>
             </>
         </div>
